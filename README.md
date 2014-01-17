@@ -1,5 +1,5 @@
-TEE-TUI-plugin
-==============
+TEE-TUI
+=======
 
 Implementation of GlobalPlatform Trusted User Interface API for Open TEE project
 
