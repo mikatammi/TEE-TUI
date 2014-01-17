@@ -14,6 +14,9 @@
 ** limitations under the License.                                           **
 *****************************************************************************/
 
+#ifndef __TEE_TUI_DATA_TYPES_H__
+#define __TEE_TUI_DATA_TYPES_H__
+
 #include <stdint.h>
 #include <stddef.h>
 
@@ -112,6 +115,7 @@ struct TEE_TUIScreenInfo {
 	uint8_t labelColor[3];
 	uint32_t labelWidth;
 	uint32_t labelHeight;
+
 	TEE_TUIScreenButtonInfo buttonInfo[TEE_TUI_NUMBER_BUTTON_TYPES];
 };
 
@@ -124,3 +128,6 @@ struct TEE_TUIEntryField {
 	char *buffer;
 	size_t bufferLength;
 };
+
+#endif /* __TEE_TUI_DATA_TYPES_H__ */
+
