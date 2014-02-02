@@ -1,5 +1,6 @@
 /*****************************************************************************
 ** Copyright (C) 2014 Intel Corporation.                                    **
+** Copyright (C) 2014 Mika Tammi                                            **
 **                                                                          **
 ** Licensed under the Apache License, Version 2.0 (the "License");          **
 ** you may not use this file except in compliance with the License.         **
@@ -19,9 +20,10 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <stdbool.h>
 
 enum {
-	TEE_ERROR_EXTERNAL_CANCEL = 0xFFFF0011;
+	TEE_ERROR_EXTERNAL_CANCEL = 0xFFFF0011
 };
 
 typedef enum {
