@@ -17,22 +17,25 @@
 #ifndef __TEE_TUI_API_H__
 #define __TEE_TUI_API_H__
 
-#include "tui_data_types.h"
+#include "tee_tui_data_types.h"
 
 TEE_Result TEE_TUICheckTextFormat(
-	char *text, uint32_t* width, uint32_t* height, uint32_t* lastIndex);
+	char *text,
+        uint32_t* width,
+        uint32_t* height,
+        uint32_t* lastIndex);
 
 TEE_Result TEE_TUIGetScreenInfo(
-	struct TEE_TUIScreenOrientation screenOrientation,
+	TEE_TUIScreenOrientation screenOrientation,
 	uint32_t nbEntryFields,
-	struct TEE_TUIScreenInfo* screenInfo);
+	TEE_TUIScreenInfo* screenInfo);
 
 TEE_Result TEE_TUIInitSession(void);
 
 TEE_Result TEE_TUICloseSession(void);
 
 TEE_Result TEE_TUIDisplayScreen(
-	struct TEE_TUIScreenConfiguration* screenConfiguration,
+	TEE_TUIScreenConfiguration* screenConfiguration,
 	bool closeTUISession,
 	TEE_TUIButtonType* selectedButton);
 

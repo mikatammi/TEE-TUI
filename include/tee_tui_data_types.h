@@ -20,23 +20,27 @@
 #include <stdint.h>
 #include <stddef.h>
 
-enum TEE_TUIEntryFieldMode {
+enum {
+	TEE_ERROR_EXTERNAL_CANCEL = 0xFFFF0011;
+};
+
+typedef enum {
 	TEE_TUI_HIDDEN_MODE = 0,
 	TEE_TUI_CLEAR_MODE,
 	TEE_TUI_TEMPORARY_CLEAR_MODE
-};
+} TEE_TUIEntryFieldMode;
 
-enum TEE_TUIEntryFieldType {
+typedef enum {
 	TEE_TUI_NUMERICAL = 0,
 	TEE_TUI_ALPHANUMERICAL
-};
+} TEE_TUIEntryFieldType;
 
-enum TEE_TUIScreenOrientation {
+typedef enum {
 	TEE_TUI_PORTRAIT = 0,
 	TEE_TUI_LANDSCAPE
-};
+} TEE_TUIScreenOrientation;
 
-enum TEE_TUIButtonType {
+typedef enum {
 	TEE_TUI_CORRECTION = 0,
 	TEE_TUI_OK,
 	TEE_TUI_CANCEL,
@@ -44,15 +48,15 @@ enum TEE_TUIButtonType {
 	TEE_TUI_PREVIOUS,
 	TEE_TUI_NEXT,
         TEE_TUI_NUMBER_BUTTON_TYPES
-};
+} TEE_TUIButtonType;
 
-enum TEE_TUIImageSource {
+typedef enum {
 	TEE_TUI_NO_SOURCE = 0,
 	TEE_TUI_REF_SOURCE,
 	TEE_TUI_OBJECT_SOURCE
-};
+} TEE_TUIImageSource;
 
-struct TEE_TUIImage {
+typedef struct {
 	TEE_TUIImageSource source;
 	union {
 		struct {
@@ -69,9 +73,9 @@ struct TEE_TUIImage {
 
 	uint32_t width;
 	uint32_t height;
-};
+} TEE_TUIImage;
 
-struct TEE_TUIScreenLabel {
+typedef struct {
 	char *text;
 	uint32_t textXOffset;
 	uint32_t textYOffset;
@@ -79,29 +83,29 @@ struct TEE_TUIScreenLabel {
 	TEE_TUIImage image;
 	uint32_t imageXOffset;
 	uint32_t imageYOffset;
-};
+} TEE_TUIScreenLabel;
 
-struct TEE_TUIButton {
+typedef struct {
 	char *text;
 	TEE_TUIImage image;
-};
+} TEE_TUIButton;
 
-struct TEE_TUIScreenConfiguration {
+typedef struct {
 	TEE_TUIScreenOrientation screenOrientation;
 	TEE_TUIScreenLabel label;
 	TEE_TUIButton * buttons[TEE_TUI_NUMBER_BUTTON_TYPES];
 	bool requestedButtons[TEE_TUI_NUMBER_BUTTON_TYPES];
-};
+} TEE_TUIScreenConfiguration;
 
-struct TEE_TUIScreenButtonInfo {
+typedef struct {
 	char *buttonText;
 	uint32_t buttonWidth;
 	uint32_t buttonHeight;
 	bool buttonTextCustom;
 	bool buttonImageCustom;
-};
+} TEE_TUIScreenButtonInfo;
 
-struct TEE_TUIScreenInfo {
+typedef struct {
 	uint32_t grayscaleBitsDepth;
 	uint32_t redBitsDepth;
 	uint32_t greenBitsDepth;
@@ -117,9 +121,9 @@ struct TEE_TUIScreenInfo {
 	uint32_t labelHeight;
 
 	TEE_TUIScreenButtonInfo buttonInfo[TEE_TUI_NUMBER_BUTTON_TYPES];
-};
+} TEE_TUIScreenInfo;
 
-struct TEE_TUIEntryField {
+typedef struct {
 	char *label;
 	TEE_TUIEntryFieldMode mode;
 	TEE_TUIEntryFieldType type;
@@ -127,7 +131,7 @@ struct TEE_TUIEntryField {
 	uint32_t maxExpectedLength;
 	char *buffer;
 	size_t bufferLength;
-};
+} TEE_TUIEntryField;
 
 #endif /* __TEE_TUI_DATA_TYPES_H__ */
 
